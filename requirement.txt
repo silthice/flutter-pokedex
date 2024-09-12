@@ -1,0 +1,31 @@
+Flutter official doc: https://docs.flutter.dev
+Flutter architecture with GetX: https://medium.com/@ximya/creating-the-ultimate-base-screen-class-based-on-mvvm-architecture-in-flutter-getx-part-1-58dada8e4266
+GetX state management doc: https://medium.com/@gauravswarankar/getx-flutter-part-1-e1591db6ea12
+Flutter libraries search: https://fluttergems.dev
+
+Hello guys, our first Flutter learn and build competition will start from 10 Sep - 27 Sep. Developers are required to follow the requirement below to build a runnable app with your creativity. UIUX is not restricted, you can build any theme or flow you like. Your app must be built by using GetX state management library. You may refer the docs above.
+
+Every developer has to present their created app and get voted by the team. Vote will be considered by the app UIUX, smoothness and flow. The highest votes will be rewarded a prize worth RM200++. 
+
+App base requirement as below:
+This app is use as Pokemon database (Pokedex). Developer requires to build an app that can search any pokemon in the app by integrating Pokemon API. 
+Pokemon database open source API: https://pokeapi.co
+
+Please feel free to add additional creative features to expand the app usefulness or user experience. 
+The app requires at least 3 screens:
+- Splash screen
+1. Put your own design logo and show during launch app.
+
+- Home screen
+1. Show a list of pokemon name with your own design by alphabet sorting
+2. Search function to search pokemon through the list
+3. Filter function to filter pokemon in the list
+4. Pagination in the list when api calling
+5. Enter pokemon detail screen by clicking the list
+
+- Pokemon Detail screen
+1. Picture of pokemon
+2. Stat of the pokemon (Example: hp, attack and etc)
+3. Information of the pokemon (Example: height, weight and etc)
+4. Type of pokemon
+5. Weakness of pokemon
