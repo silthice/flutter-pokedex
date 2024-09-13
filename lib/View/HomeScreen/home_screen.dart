@@ -32,8 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 20), // Space
-                  Expanded(child: PokemonList())
+                  const SizedBox(height: 20),
+                  Expanded(child: PokemonList()),
                 ],
               ),
             ),
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         if (homeCtrl.isLoadingMore.value == true)
           Container(
-            color: Colors.grey.withOpacity(0.5), // Grey background with opacity
+            color: Colors.grey.withOpacity(0.5),
             child: Center(
               child: Image.asset(ImageAssets.pokeballBounce),
             ),

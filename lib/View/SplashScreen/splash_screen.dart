@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    SplashServices.getPokemonList(11);
+    SplashServices.getPokemonList(0);
   }
 
   @override

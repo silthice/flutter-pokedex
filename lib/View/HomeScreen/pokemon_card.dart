@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
+import 'package:pokedex/Resources/Images/image_assets.dart';
 import 'package:pokedex/Utilities/pokemon_utils.dart';
 
 class PokemonCard extends StatelessWidget {
@@ -19,44 +20,85 @@ class PokemonCard extends StatelessWidget {
       onTap: () {
         // Get.toNamed('/pokemonDetail', arguments: pokemon); /
       },
-      child: Container(
-        decoration: BoxDecoration(
-          color: getBackgroundColors[pokemonType],
-          borderRadius: BorderRadius.circular(15),
-        ),
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '${pokemon.name.toString().capitalize}',
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+      child: Stack(children: [
+        Container(
+          height: 180,
+          width: 180,
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              colors: [
+                (getBackgroundColors[pokemonType] ?? Colors.white).withOpacity(.1),
+                getBackgroundColors[pokemonType] ?? Colors.white,
+              ],
+            ),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          padding: const EdgeInsets.only(top: 10, left: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${pokemon.name.toString().capitalize}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            Image.network(
-              pokemonImage,
-              height: 80,
-              width: 80,
-            ),
-            SizedBox(
-              height: 50,
-              width: 150,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: pokemonTypes.length,
-                  itemBuilder: (context, idx) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text('hhaa'),
-                    );
-                  }),
-            )
-          ],
+              SizedBox(
+                height: 140,
+                width: 90,
+                child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: pokemonTypes.length,
+                    itemBuilder: (context, idx) {
+                      final type = pokemonTypes[idx].type?.name ?? "";
+                      return Container(
+                        height: 30,
+                        margin: const EdgeInsets.only(top: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: getTypeContainerColors[type] ??
+                              Colors.transparent,
+                        ),
+                        child: Center(
+                          child: Text(
+                            type.toString().capitalize ?? "",
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
-      ),
+        Positioned(
+            bottom: 10,
+            right: 0,
+            child: Transform.rotate(
+                angle: -10,
+                child: Image.asset(
+                  ImageAssets.pokeball,
+                  height: 100,
+                  width: 100,
+                  color: Colors.white24,
+                ))),
+        Positioned(
+          bottom: 10,
+          right: 10,
+          child: Image.network(
+            pokemonImage,
+            height: 100,
+            width: 100,
+          ),
+        ),
+      ]),
     );
   }
 }
