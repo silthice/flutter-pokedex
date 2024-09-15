@@ -4,6 +4,7 @@ import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.da
 import 'package:pokedex/Repository/home_repository.dart';
 import 'package:pokedex/View/HomeScreen/home_screen.dart';
 import 'package:pokedex/ViewModel/Controllers/home_controller.dart';
+import 'package:deepcopy/deepcopy.dart';
 
 class SplashController extends GetxController {
   final homeCtrl = Get.put(HomeController());
@@ -23,6 +24,7 @@ class SplashController extends GetxController {
       if (list != null && list.isNotEmpty) {
         Future.wait(list.map((pokemon) => getPokemonDetail(pokemon.url))).then((details) {
           homeCtrl.pokemonList.addAll(details);
+          homeCtrl.oriPokemonList.value = homeCtrl.pokemonList.deepcopy();
           homeCtrl.isLoadingMore.value = false;
           Get.offAll(() => HomeScreen(), transition: Transition.circularReveal);
         });

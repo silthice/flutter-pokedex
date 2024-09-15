@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class PokemonDetailResponseDataModel {
   dynamic height;
   dynamic id;
@@ -64,7 +66,7 @@ class PokemonDetailResponseDataModel {
     }
     data['weight'] = this.weight;
     if (url != null) {
-      data['url'] = url; // Serialize the URL
+      data['url'] = url;
     }
     return data;
   }
@@ -196,11 +198,14 @@ class Types {
   }
 }
 
-class Type {
+class Type extends Equatable {
   dynamic name;
   dynamic url;
 
   Type({this.name, this.url});
+
+  @override
+  List<Object?> get props => [name];
 
   Type.fromJson(Map<String, dynamic> json) {
     name = json['name'];

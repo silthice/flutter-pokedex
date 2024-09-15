@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
 
 const Map<String, Color> getTypeContainerColors = {
   'normal': Color(0xFFC1C1A1),
@@ -42,6 +43,29 @@ const Map<String, Color> getBackgroundColors = {
   'fairy': Color(0xFFD685AD),
 };
 
+List<Type> getPokemonTypeList() {
+  return [
+    Type(name: 'normal'),
+    Type(name: 'grass'),
+    Type(name: 'fire'),
+    Type(name: 'water'),
+    Type(name: 'electric'),
+    Type(name: 'ice'),
+    Type(name: 'fighting'),
+    Type(name: 'poison'),
+    Type(name: 'ground'),
+    Type(name: 'flying'),
+    Type(name: 'psychic'),
+    Type(name: 'bug'),
+    Type(name: 'rock'),
+    Type(name: 'ghost'),
+    Type(name: 'dark'),
+    Type(name: 'dragon'),
+    Type(name: 'steel'),
+    Type(name: 'fairy'),
+  ];
+}
+
 const Map<String, Color> getStatColors = {
   'hp': Color(0xFF2fd64e),
   'attack': Color(0xFFff2e00),
@@ -51,7 +75,6 @@ const Map<String, Color> getStatColors = {
   'speed': Color(0xFFe8e654),
   'total': Color(0xFF2d33cf),
 };
-
 
 String formatNumber(int number) {
   if (number < 10) {

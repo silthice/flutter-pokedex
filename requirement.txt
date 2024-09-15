@@ -14,18 +14,18 @@ Pokemon database open source API: https://pokeapi.co
 Please feel free to add additional creative features to expand the app usefulness or user experience. 
 The app requires at least 3 screens:
 - Splash screen
-1. Put your own design logo and show during launch app.
+1. Put your own design logo and show during launch app. //done
 
 - Home screen
 1. Show a list of pokemon name with your own design by alphabet sorting
-2. Search function to search pokemon through the list
-3. Filter function to filter pokemon in the list
+2. Search function to search pokemon through the list 
+3. Filter function to filter pokemon in the list //done
 4. Pagination in the list when api calling
-5. Enter pokemon detail screen by clicking the list
+5. Enter pokemon detail screen by clicking the list //done
 
 - Pokemon Detail screen
-1. Picture of pokemon
-2. Stat of the pokemon (Example: hp, attack and etc)
-3. Information of the pokemon (Example: height, weight and etc)
-4. Type of pokemon
+1. Picture of pokemon //done
+2. Stat of the pokemon (Example: hp, attack and etc) //done
+3. Information of the pokemon (Example: height, weight and etc) //done
+4. Type of pokemon //done
 5. Weakness of pokemon

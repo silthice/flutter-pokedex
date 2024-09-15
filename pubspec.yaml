@@ -38,6 +38,8 @@ dependencies:
   get: ^4.6.6
   http: ^1.2.2
   step_progress_indicator: ^1.0.2
+  equatable: ^2.0.5
+  deepcopy: ^1.1.2
 
 dev_dependencies:
   flutter_test:

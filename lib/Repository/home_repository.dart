@@ -3,7 +3,7 @@ import 'package:pokedex/Resources/AppUrl/app_url.dart';
 
 class HomeRepository {
   static Future<dynamic> getPokemonList(int offset) async {
-    var url = '${AppUrl.baseUrl}/pokemon?limit=10&offset=${offset.toString()}';
+    var url = '${AppUrl.baseUrl}/pokemon?limit=50&offset=${offset.toString()}';
     var response = await ApiServices().getApi(url);
     return response;
   }

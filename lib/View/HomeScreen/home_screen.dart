@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/Resources/Images/image_assets.dart';
+import 'package:pokedex/View/HomeScreen/filter_dialog.dart';
 import 'package:pokedex/View/HomeScreen/pokemon_list.dart';
 import 'package:pokedex/ViewModel/Controllers/home_controller.dart';
 
@@ -37,6 +38,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+              ),
+              floatingActionButton: FloatingActionButton(
+                backgroundColor: Colors.redAccent,
+                foregroundColor: Colors.white,
+                onPressed: () {
+                  Get.defaultDialog(
+                    onWillPop: () async {
+                      return true;
+                    },
+                    title: 'Filter',
+                    titleStyle: const TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                    radius: 10,
+                    content: FilterDialog(), // The dialog content
+                  );
+                },
+                child: const Icon(Icons.tune),
               ),
             ),
             if (homeCtrl.isLoadingMore.value == true)
