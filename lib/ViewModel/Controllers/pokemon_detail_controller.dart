@@ -22,4 +22,28 @@ class PokemonDetailController extends GetxController {
       return (abilityData.ability?.name as String).capitalize;
     }).join(', ');
   }
+
+  List<Stats> getPokemonStatsLbl() {
+    List<Stats> statsList = pokemon.value?.stats ?? [];
+    int totalBaseStat =
+        statsList.fold(0, (sum, stat) => sum + (stat.baseStat as int));
+
+    Stats totalStat = Stats(
+      baseStat: totalBaseStat,
+      stat: Stat(name: 'Total', url: ''),
+    );
+    return [...statsList, totalStat];
+  }
+
+  List<Stats> getPokemonStatsValue() {
+    List<Stats> statsList = pokemon.value?.stats ?? [];
+    int totalBaseStat =
+        statsList.fold(0, (sum, stat) => sum + (stat.baseStat as int));
+
+    Stats totalStat = Stats(
+      baseStat: totalBaseStat,
+      stat: Stat(name: 'Total', url: ''),
+    );
+    return [...statsList, totalStat];
+  }
 }

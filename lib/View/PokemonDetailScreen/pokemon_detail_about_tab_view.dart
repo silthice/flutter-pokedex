@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/Resources/Images/base_pokemon_detail_tab_stat.dart';
 
-class PokemonDetailStatTabView extends BasePokemonDetailTabStat {
-  PokemonDetailStatTabView({super.key});
+class PokemonDetailAboutTabView extends BasePokemonDetailTabStat {
+  PokemonDetailAboutTabView({super.key});
 
   @override
   Widget buildContent() {

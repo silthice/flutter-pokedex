@@ -42,43 +42,16 @@ const Map<String, Color> getBackgroundColors = {
   'fairy': Color(0xFFD685AD),
 };
 
-double getStat(String stat, List<Map<String, dynamic>> pokemonStats) {
-  const Map<String, int> statIndex = {
-    'HP': 0,
-    'ATTACK': 1,
-    'DEFENSE': 2,
-    'SP_ATK': 3,
-    'SP_DEF': 4,
-    'SPEED': 5,
-  };
+const Map<String, Color> getStatColors = {
+  'hp': Color(0xFF2fd64e),
+  'attack': Color(0xFFff2e00),
+  'defense': Color(0xFF2fd64e),
+  'special-attack': Color(0xFFa155f2),
+  'special-defense': Color(0xFFa155f2),
+  'speed': Color(0xFFe8e654),
+  'total': Color(0xFF2d33cf),
+};
 
-  if (statIndex.containsKey(stat)) {
-    return pokemonStats[statIndex[stat]!]['base_stat'].toDouble();
-  }
-
-  return pokemonStats.fold(0, (sum, item) => sum + item['base_stat']);
-}
-
-double getProgress(String stat, List<Map<String, dynamic>> pokemonStats) {
-  const Map<String, int> baseStat = {
-    'HP': 255,
-    'ATTACK': 190,
-    'DEFENSE': 230,
-    'SP_ATK': 194,
-    'SP_DEF': 230,
-    'SPEED': 180,
-  };
-
-  if (baseStat.containsKey(stat)) {
-    return getStat(stat, pokemonStats) / baseStat[stat]!;
-  }
-
-  double totalBaseStats =
-      pokemonStats.fold(0, (sum, item) => sum + item['base_stat']);
-  double totalBaseStatValues =
-      baseStat.values.fold(0, (sum, value) => sum + value);
-  return totalBaseStats / totalBaseStatValues;
-}
 
 String formatNumber(int number) {
   if (number < 10) {
