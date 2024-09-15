@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
@@ -22,7 +23,7 @@ class PokemonCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         pokemonDetailCtrl.pokemon.value = pokemon;
-        Get.to(() =>PokemonDetailScreen());
+        Get.to(() => PokemonDetailScreen());
       },
       child: Stack(children: [
         Container(
@@ -31,7 +32,8 @@ class PokemonCard extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: RadialGradient(
               colors: [
-                (getBackgroundColors[pokemonType] ?? Colors.white).withOpacity(.1),
+                (getBackgroundColors[pokemonType] ?? Colors.white)
+                    .withOpacity(.1),
                 getBackgroundColors[pokemonType] ?? Colors.white,
               ],
             ),
@@ -96,8 +98,9 @@ class PokemonCard extends StatelessWidget {
         Positioned(
           bottom: 10,
           right: 10,
-          child: Image.network(
-            pokemonImage,
+          child: CachedNetworkImage(
+            imageUrl: pokemonImage,
+            errorWidget: (context, url, error) => const Icon(Icons.error),
             height: 100,
             width: 100,
           ),

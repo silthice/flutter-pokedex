@@ -60,6 +60,7 @@ class HomeController extends GetxController {
       pokemonList.value = [...oriPokemonList];
       return;
     }
+    isLoadingMore.value = true;
 
     var filteredPokemons = oriPokemonList.where((pokemon) {
       return filterSelectionList.every((selectedType) {
@@ -69,13 +70,11 @@ class HomeController extends GetxController {
             false;
       });
     }).toList();
-    // var filteredPokemons = pokemonList.where((pokemon) {
-    //   return pokemon.types?.any((pokemonType) {
-    //         return filterSelectionList.any(
-    //             (selectedType) => selectedType.name == pokemonType.type?.name);
-    //       }) ??
-    //       false;
-    // }).toList();
+    
     pokemonList.value = [...filteredPokemons];
+
+    Future.delayed(const Duration(milliseconds: 300), () {
+      isLoadingMore.value = false;
+    });
   }
 }

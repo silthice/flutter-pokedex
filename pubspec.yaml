@@ -40,6 +40,7 @@ dependencies:
   step_progress_indicator: ^1.0.2
   equatable: ^2.0.5
   deepcopy: ^1.1.2
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

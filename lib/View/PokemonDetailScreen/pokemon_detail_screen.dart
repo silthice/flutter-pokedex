@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
@@ -131,19 +132,23 @@ class PokemonDetailScreen extends StatelessWidget {
                                 topLeft: Radius.circular(60),
                                 topRight: Radius.circular(60))),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
-                          child: TabContents(pokemon,)
-                        )),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20.0, horizontal: 20),
+                            child: TabContents(
+                              pokemon,
+                            ))),
                   ),
                   Positioned(
                     bottom: screenDimension.height * 0.485,
                     left: screenDimension.width * 0.2,
                     right: screenDimension.width * 0.2,
-                    child: Image.network(
-                      pokemonImage,
-                      fit: BoxFit.fill,
+                    child: CachedNetworkImage(
+                      imageUrl: pokemonImage,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                       height: 250,
                       width: 250,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ],
