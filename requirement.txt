@@ -28,4 +28,4 @@ The app requires at least 3 screens:
 2. Stat of the pokemon (Example: hp, attack and etc) //done
 3. Information of the pokemon (Example: height, weight and etc) //done
 4. Type of pokemon //done
-5. Weakness of pokemon
+5. Weakness of pokemon // done

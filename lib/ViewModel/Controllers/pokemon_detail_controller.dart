@@ -23,6 +23,20 @@ class PokemonDetailController extends GetxController {
     }).join(', ');
   }
 
+  String getPokemonWeaknesses() {
+    List<String> typeNames = getPokemonTypeList()
+        .map((e) => (e.type?.name ?? '').toString().capitalize ?? "")
+        .toList();
+    var weaknessList = getWeakness(typeNames).toList();
+
+    if (weaknessList.isEmpty) {
+      return '-';
+    }
+    var formattedString = weaknessList.toString();
+
+    return formattedString.substring(1, formattedString.length - 1);
+  }
+
   List<Stats> getPokemonStatsLbl() {
     List<Stats> statsList = pokemon.value?.stats ?? [];
     int totalBaseStat =

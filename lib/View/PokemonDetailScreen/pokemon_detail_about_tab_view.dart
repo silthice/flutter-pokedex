@@ -6,6 +6,7 @@ class PokemonDetailAboutTabView extends BasePokemonDetailTabStat {
 
   @override
   Widget buildContent() {
+    print("mehhhhhhh ${pokemonDetailCtrl.getPokemonWeaknesses()}");
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -43,6 +44,13 @@ class PokemonDetailAboutTabView extends BasePokemonDetailTabStat {
                 SizedBox(
                   height: 20,
                 ),
+                Text(
+                  'Weakness',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                      color: Colors.grey),
+                ),
               ],
             ),
             const Spacer(),
@@ -71,6 +79,16 @@ class PokemonDetailAboutTabView extends BasePokemonDetailTabStat {
                 ),
                 Text(
                   pokemonDetailCtrl.getPokemonAbilities(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.black),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  pokemonDetailCtrl.getPokemonWeaknesses(),
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,

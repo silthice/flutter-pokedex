@@ -101,3 +101,75 @@ String formatWeight(int? number) {
   double weightInKg = number / 10;
   return '${weightInKg.toStringAsFixed(1)} kg';
 }
+
+Map<String, List<String>> typeWeaknesses = {
+  'Normal': ['Fighting'],
+  'Fire': ['Water', 'Ground', 'Rock'],
+  'Water': ['Grass', 'Electric'],
+  'Grass': ['Fire', 'Ice', 'Poison', 'Flying', 'Bug'],
+  'Electric': ['Ground'],
+  'Ice': ['Fire', 'Fighting', 'Rock', 'Steel'],
+  'Fighting': ['Flying', 'Psychic', 'Fairy'],
+  'Poison': ['Ground', 'Psychic'],
+  'Ground': ['Water', 'Grass', 'Ice'],
+  'Flying': ['Electric', 'Ice', 'Rock'],
+  'Psychic': ['Bug', 'Ghost', 'Dark'],
+  'Bug': ['Flying', 'Rock', 'Fire'],
+  'Rock': ['Water', 'Grass', 'Fighting', 'Ground', 'Steel'],
+  'Ghost': ['Ghost', 'Dark'],
+  'Dragon': ['Ice', 'Dragon', 'Fairy'],
+  'Dark': ['Fighting', 'Bug', 'Fairy'],
+};
+
+Map<String, List<String>> typeImmunities = {
+  'Normal': ['Ghost'],
+  'Ground': ['Electric'],
+  'Flying': ['Ground'],
+  'Ghost': ['Normal', 'Fighting'],
+  'Dark': ['Psychic'],
+  'Steel': ['Poison'],
+};
+
+Map<String, List<String>> typeResistances = {
+  'Normal': [],
+  'Fire': ['Grass', 'Ice', 'Bug', 'Steel', 'Fairy', 'Steel'],
+  'Water': ['Fire', 'Water', 'Ice', 'Steel'],
+  'Grass': ['Water', 'Electric', 'Grass', 'Ground'],
+  'Electric': ['Electric', 'Flying', 'Steel'],
+  'Ice': ['Ice'],
+  'Fighting': ['Bug', 'Rock', 'Dark'],
+  'Poison': ['Grass', 'Fairy', 'Fighting', 'Poison', 'Bug'],
+  'Ground': ['Poison', 'Rock'],
+  'Flying': ['Grass', 'Fighting', 'Bug'],
+  'Psychic': ['Fighting', 'Psychic'],
+  'Bug': ['Grass', 'Fighting', 'Ground'],
+  'Rock': ['Normal', 'Fire', 'Poison', 'Flying'],
+  'Ghost': ['Poison', 'Bug'],
+  'Dragon': ['Fire', 'Water', 'Electric', 'Grass'],
+  'Dark': ['Ghost', 'Dark'],
+};
+
+Set<String> getWeakness(List<String> types) {
+  Set<String> collectedWeaknesses = {};
+  Set<String> collectedImmunities = {};
+  Set<String> collectedResistances = {};
+
+  for (var type in types) {
+    if (typeWeaknesses.containsKey(type)) {
+      collectedWeaknesses.addAll(typeWeaknesses[type]!);
+    }
+    if (typeImmunities.containsKey(type)) {
+      collectedImmunities.addAll(typeImmunities[type]!);
+    }
+    if (typeResistances.containsKey(type)) {
+      collectedResistances.addAll(typeResistances[type]!);
+    }
+  }
+
+  collectedWeaknesses.removeAll(types);
+  collectedWeaknesses.removeAll(collectedImmunities);
+
+  collectedWeaknesses.removeAll(collectedResistances);
+
+  return collectedWeaknesses;
+}
