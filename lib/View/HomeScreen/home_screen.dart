@@ -16,37 +16,37 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Pokedex',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+    return Obx(() => Stack(
+          children: [
+            Scaffold(
+              body: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Pokedex',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Expanded(child: PokemonList()),
+                    ],
                   ),
-                  const SizedBox(height: 20),
-                  Expanded(child: PokemonList()),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-        if (homeCtrl.isLoadingMore.value == true)
-          Container(
-            color: Colors.grey.withOpacity(0.5),
-            child: Center(
-              child: Image.asset(ImageAssets.pokeballBounce),
-            ),
-          ),
-      ],
-    );
+            if (homeCtrl.isLoadingMore.value == true)
+              Container(
+                color: Colors.grey.withOpacity(0.5),
+                child: Center(
+                  child: Image.asset(ImageAssets.pokeballBounce),
+                ),
+              ),
+          ],
+        ));
   }
 }

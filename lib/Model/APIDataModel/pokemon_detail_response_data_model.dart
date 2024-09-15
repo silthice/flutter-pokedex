@@ -6,6 +6,7 @@ class PokemonDetailResponseDataModel {
   Sprites? sprites;
   List<Stats>? stats;
   List<Types>? types;
+  List<Abilities>? abilities;
   dynamic weight;
   dynamic url;
 
@@ -17,10 +18,12 @@ class PokemonDetailResponseDataModel {
       this.sprites,
       this.stats,
       this.types,
+      this.abilities,
       this.weight,
       this.url});
 
-  PokemonDetailResponseDataModel.fromJson(Map<String, dynamic> json, {this.url}) {
+  PokemonDetailResponseDataModel.fromJson(Map<String, dynamic> json,
+      {this.url}) {
     height = json['height'];
     id = json['id'];
     name = json['name'];
@@ -32,6 +35,9 @@ class PokemonDetailResponseDataModel {
         : null;
     types = json['types'] != null
         ? (json['types'] as List).map((v) => Types.fromJson(v)).toList()
+        : null;
+    abilities = json['abilities'] != null
+        ? (json['abilities'] as List).map((v) => Abilities.fromJson(v)).toList()
         : null;
     weight = json['weight'];
   }
@@ -52,6 +58,9 @@ class PokemonDetailResponseDataModel {
     }
     if (this.types != null) {
       data['types'] = this.types!.map((v) => v.toJson()).toList();
+    }
+    if (this.abilities != null) {
+      data['abilities'] = this.abilities!.map((v) => v.toJson()).toList();
     }
     data['weight'] = this.weight;
     if (url != null) {
@@ -194,6 +203,43 @@ class Type {
   Type({this.name, this.url});
 
   Type.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    url = json['url'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = name;
+    data['url'] = url;
+    return data;
+  }
+}
+
+class Abilities {
+  Ability? ability;
+
+  Abilities({this.ability});
+
+  Abilities.fromJson(Map<String, dynamic> json) {
+    ability = json['ability'] != null ? Ability.fromJson(json['ability']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.ability != null) {
+      data['ability'] = this.ability!.toJson();
+    }
+    return data;
+  }
+}
+
+class Ability {
+  dynamic name;
+  dynamic url;
+
+  Ability({this.name, this.url});
+
+  Ability.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
   }

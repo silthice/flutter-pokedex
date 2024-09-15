@@ -3,11 +3,14 @@ import 'package:get/get.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
 import 'package:pokedex/Resources/Images/image_assets.dart';
 import 'package:pokedex/Utilities/pokemon_utils.dart';
+import 'package:pokedex/View/PokemonDetailScreen/pokemon_detail_screen.dart';
+import 'package:pokedex/ViewModel/Controllers/pokemon_detail_controller.dart';
 
 class PokemonCard extends StatelessWidget {
   final dynamic pokemon;
+  final pokemonDetailCtrl = Get.put(PokemonDetailController());
 
-  const PokemonCard(this.pokemon, {super.key});
+  PokemonCard(this.pokemon, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,8 @@ class PokemonCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // Get.toNamed('/pokemonDetail', arguments: pokemon); /
+        pokemonDetailCtrl.pokemon.value = pokemon;
+        Get.to(() =>PokemonDetailScreen());
       },
       child: Stack(children: [
         Container(

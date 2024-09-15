@@ -9,8 +9,9 @@ class PokemonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("giap check ${homeCtrl.isLoadingMore.value} ${homeCtrl.pokemonList}");
     return Obx(() {
-      if (homeCtrl.pokemonList.isEmpty) {
+      if (homeCtrl.pokemonList.isEmpty && homeCtrl.isLoadingMore.value == false) {
         return const Center(child: Text('No Pokémon found'));
       }
 

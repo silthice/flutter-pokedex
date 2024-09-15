@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/Resources/Images/image_assets.dart';
 import 'package:pokedex/View/SplashScreen/splash_screen.dart';
 
 void main() {

@@ -51,11 +51,11 @@ double getStat(String stat, List<Map<String, dynamic>> pokemonStats) {
     'SP_DEF': 4,
     'SPEED': 5,
   };
-  
+
   if (statIndex.containsKey(stat)) {
     return pokemonStats[statIndex[stat]!]['base_stat'].toDouble();
   }
-  
+
   return pokemonStats.fold(0, (sum, item) => sum + item['base_stat']);
 }
 
@@ -68,12 +68,40 @@ double getProgress(String stat, List<Map<String, dynamic>> pokemonStats) {
     'SP_DEF': 230,
     'SPEED': 180,
   };
-  
+
   if (baseStat.containsKey(stat)) {
     return getStat(stat, pokemonStats) / baseStat[stat]!;
   }
-  
-  double totalBaseStats = pokemonStats.fold(0, (sum, item) => sum + item['base_stat']);
-  double totalBaseStatValues = baseStat.values.fold(0, (sum, value) => sum + value);
+
+  double totalBaseStats =
+      pokemonStats.fold(0, (sum, item) => sum + item['base_stat']);
+  double totalBaseStatValues =
+      baseStat.values.fold(0, (sum, value) => sum + value);
   return totalBaseStats / totalBaseStatValues;
+}
+
+String formatNumber(int number) {
+  if (number < 10) {
+    return '00$number';
+  } else if (number < 100) {
+    return '0$number';
+  } else {
+    return '$number';
+  }
+}
+
+String formatHeight(int? number) {
+  if (number == null) {
+    return '-';
+  }
+  double heightInMeters = number / 10;
+  return '${heightInMeters.toStringAsFixed(1)} m';
+}
+
+String formatWeight(int? number) {
+  if (number == null) {
+    return '-';
+  }
+  double weightInKg = number / 10;
+  return '${weightInKg.toStringAsFixed(1)} kg';
 }
