@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/Resources/Images/base_pokemon_detail_tab_stat.dart';
+import 'package:pokedex/View/PokemonDetailScreen/base_pokemon_detail_tab_stat.dart';
 import 'package:pokedex/Utilities/Extensions/string_extension.dart';
 import 'package:pokedex/Utilities/pokemon_utils.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';

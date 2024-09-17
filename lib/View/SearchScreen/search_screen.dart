@@ -32,8 +32,7 @@ class SearchScreen extends StatelessWidget {
                           width: 40,
                           child: GestureDetector(
                             onTap: () {
-                              searchCtrl.editController.clear();
-                              searchCtrl.searchedPokemonList.value = [];
+                              searchCtrl.reset();
                               Get.back();
                             },
                             child: const Icon(

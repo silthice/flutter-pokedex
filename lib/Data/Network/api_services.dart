@@ -8,7 +8,7 @@ class ApiServices extends BaseApiServices {
   dynamic jsonResponse(http.Response response) {
     // print('Response Status Code: ${response.statusCode}');
     // print('Response Headers: ${response.headers}');
-    print('Response Body: ${response.body}');
+    // print('Response Body: ${response.body}');
     switch (response.statusCode) {
       case 200:
         var jsonResponse = jsonDecode(response.body);

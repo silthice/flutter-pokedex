@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_list_response_data_model.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
@@ -11,6 +10,7 @@ class HomeController extends GetxController {
   final pokemonList = [].obs;
   final oriPokemonList = [].obs;
   final filterSelectionList = <Type>[].obs;
+  final currentOffset = 0.obs;
 
   int getPokemonCount() => pokemonListModel.value?.count.toInt() ?? 0;
   String getNextPageUrl() => pokemonListModel.value?.next ?? '';
@@ -19,6 +19,7 @@ class HomeController extends GetxController {
   List<Results> setPokemonList() => pokemonListModel.value?.results ?? [];
 
   void getPokemonList(int offset) {
+    if (isLoadingMore.value) return; 
     isLoadingMore.value = true;
     HomeRepository.getPokemonList(offset).then((value) {
       pokemonListModel.value = PokemonListResponseDataModel.fromJson(value);
@@ -29,6 +30,7 @@ class HomeController extends GetxController {
             .then((details) {
           pokemonList.addAll(details);
           oriPokemonList.value = pokemonList.deepcopy();
+          currentOffset.value += list.length; 
           isLoadingMore.value = false;
         });
       }

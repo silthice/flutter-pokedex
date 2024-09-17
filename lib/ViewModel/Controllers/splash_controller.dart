@@ -26,6 +26,7 @@ class SplashController extends GetxController {
           homeCtrl.pokemonList.addAll(details);
           homeCtrl.oriPokemonList.value = homeCtrl.pokemonList.deepcopy();
           homeCtrl.isLoadingMore.value = false;
+          homeCtrl.currentOffset.value += list.length;
           Get.offAll(() => HomeScreen(), transition: Transition.circularReveal);
         });
       }

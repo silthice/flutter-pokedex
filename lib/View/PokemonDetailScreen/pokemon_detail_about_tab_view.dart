@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/Resources/Images/base_pokemon_detail_tab_stat.dart';
+import 'package:pokedex/View/PokemonDetailScreen/base_pokemon_detail_tab_stat.dart';
 
 class PokemonDetailAboutTabView extends BasePokemonDetailTabStat {
   PokemonDetailAboutTabView({super.key});
 
   @override
   Widget buildContent() {
-    print("mehhhhhhh ${pokemonDetailCtrl.getPokemonWeaknesses()}");
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
