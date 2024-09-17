@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pokedex/Resources/Images/image_assets.dart';
 import 'package:pokedex/View/HomeScreen/filter_dialog.dart';
 import 'package:pokedex/View/HomeScreen/pokemon_list.dart';
+import 'package:pokedex/View/SearchScreen/search_screen.dart';
 import 'package:pokedex/ViewModel/Controllers/home_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,22 +22,49 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Scaffold(
               body: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Pokedex',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Pokedex',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () => Get.to(() => SearchScreen()),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.blueGrey.withOpacity(0.2)),
+                              child: const Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(3.0),
+                                  child: Icon(
+                                    Icons.search,
+                                    size: 25,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 20),
-                      Expanded(child: PokemonList()),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 20),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: PokemonList(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               floatingActionButton: FloatingActionButton(
@@ -48,9 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return true;
                     },
                     title: 'Filter',
-                    titleStyle: const TextStyle(
-                      fontWeight: FontWeight.bold
-                    ),
+                    titleStyle: const TextStyle(fontWeight: FontWeight.bold),
                     radius: 10,
                     content: FilterDialog(), // The dialog content
                   );

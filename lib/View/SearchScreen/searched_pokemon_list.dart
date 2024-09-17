@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/View/HomeScreen/pokemon_card.dart';
-import 'package:pokedex/ViewModel/Controllers/home_controller.dart';
+import 'package:pokedex/ViewModel/Controllers/search_pokemon_controller.dart';
 
-class PokemonList extends StatelessWidget {
-  PokemonList({super.key});
-  final homeCtrl = Get.find<HomeController>();
+class SearchedPokemonList extends StatelessWidget {
+  SearchedPokemonList({super.key});
+  final searchCtrl = Get.find<SearchPokemonController>();
 
   @override
   Widget build(BuildContext context) {
-    print("giap check ${homeCtrl.isLoadingMore.value} ${homeCtrl.pokemonList}");
     return Obx(() {
-      if (homeCtrl.pokemonList.isEmpty && homeCtrl.isLoadingMore.value == false) {
+      if (searchCtrl.searchedPokemonList.isEmpty &&
+          searchCtrl.isLoadingMore.value == false) {
         return const Center(child: Text('No Pokémon found'));
       }
 
       return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, 
-          crossAxisSpacing: 20, 
+          crossAxisCount: 2,
+          crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        itemCount: homeCtrl.pokemonList.length,
+        itemCount: searchCtrl.searchedPokemonList.length,
         itemBuilder: (context, index) {
-          final pokemon = homeCtrl.pokemonList[index];
+          final pokemon = searchCtrl.searchedPokemonList[index];
           return PokemonCard(pokemon);
         },
       );

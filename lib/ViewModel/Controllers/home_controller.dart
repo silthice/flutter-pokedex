@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_list_response_data_model.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
@@ -70,7 +71,7 @@ class HomeController extends GetxController {
             false;
       });
     }).toList();
-    
+
     pokemonList.value = [...filteredPokemons];
 
     Future.delayed(const Duration(milliseconds: 300), () {
