@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:pokedex/Model/APIDataModel/pokemon_detail_response_data_model.dart';
 import 'package:pokedex/Resources/Images/image_assets.dart';
 import 'package:pokedex/Utilities/pokemon_utils.dart';
-import 'package:pokedex/View/PokemonDetailScreen/pokemon_detail_screen.dart';
 import 'package:pokedex/ViewModel/Controllers/pokemon_detail_controller.dart';
 
 class PokemonCard extends StatelessWidget {
@@ -23,7 +22,7 @@ class PokemonCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         pokemonDetailCtrl.pokemon.value = pokemon;
-        Get.to(() => PokemonDetailScreen());
+        pokemonDetailCtrl.getDescription();
       },
       child: Container(
         decoration: BoxDecoration(

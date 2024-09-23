@@ -26,39 +26,54 @@ class FilterDialog extends StatelessWidget {
                   final isSelected = homeCtrl.filterSelectionList.contains(e);
                   return GestureDetector(
                     onTap: () => homeCtrl.handleFilterSelection(e),
-                    child: Container(
-                      height: 30,
-                      margin: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        border: isSelected
-                            ? Border.all(
-                                color: Colors.redAccent,
-                                width: 3) // Add red border if selected
-                            : null,
-                        borderRadius: BorderRadius.circular(10),
-                        color: getTypeContainerColors[e.name] ??
-                            Colors.transparent,
-                      ),
-                      child: Center(
-                        child: Text(
-                          e.name.toString().capitalize ?? "",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Container(
+                            height: 30,
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              border: isSelected
+                                  ? Border.all(
+                                      color: Colors.black,
+                                      width: 3)
+                                  : null,
+                              borderRadius: BorderRadius.circular(10),
+                              color: getTypeContainerColors[e.name] ??
+                                  Colors.transparent,
+                            ),
+                            child: Center(
+                              child: Text(
+                                e.name.toString().capitalize ?? "",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        if (isSelected)
+                          const Positioned(
+                              right: 10,
+                              top: 10,
+                              child: Icon(
+                                Icons.check,
+                                color: Colors.black,
+                                size: 30,
+                              ))
+                      ],
                     ),
                   );
                 }).toList());
           }),
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.bold
-                ),
+                textStyle: const TextStyle(fontWeight: FontWeight.bold),
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.redAccent,
                 shape: RoundedRectangleBorder(

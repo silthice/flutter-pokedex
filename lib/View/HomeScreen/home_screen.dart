@@ -77,8 +77,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     title: 'Filter',
                     titleStyle: const TextStyle(fontWeight: FontWeight.bold),
+                    titlePadding: const EdgeInsets.only(top: 20),
                     radius: 10,
-                    content: FilterDialog(), // The dialog content
+                    content: FilterDialog(),
                   );
                 },
                 child: const Icon(Icons.tune),

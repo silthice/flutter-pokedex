@@ -45,26 +45,26 @@ class PokemonDetailResponseDataModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['height'] = this.height;
+    data['height'] = height;
 
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['order'] = this.order;
-    if (this.sprites != null) {
-      data['sprites'] = this.sprites!.toJson();
+    data['id'] = id;
+    data['name'] = name;
+    data['order'] = order;
+    if (sprites != null) {
+      data['sprites'] = sprites!.toJson();
     }
-    if (this.stats != null) {
-      data['stats'] = this.stats!.map((v) => v.toJson()).toList();
+    if (stats != null) {
+      data['stats'] = stats!.map((v) => v.toJson()).toList();
     }
-    if (this.types != null) {
-      data['types'] = this.types!.map((v) => v.toJson()).toList();
+    if (types != null) {
+      data['types'] = types!.map((v) => v.toJson()).toList();
     }
-    if (this.abilities != null) {
-      data['abilities'] = this.abilities!.map((v) => v.toJson()).toList();
+    if (abilities != null) {
+      data['abilities'] = abilities!.map((v) => v.toJson()).toList();
     }
-    data['weight'] = this.weight;
+    data['weight'] = weight;
     if (url != null) {
       data['url'] = url;
     }
@@ -83,14 +83,14 @@ class Sprites {
 
   Sprites.fromJson(Map<String, dynamic> json) {
     frontDefault = json['front_default'];
-    other = json['other'] != null ? new Other.fromJson(json['other']) : null;
+    other = json['other'] != null ? Other.fromJson(json['other']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['front_default'] = this.frontDefault;
-    if (this.other != null) {
-      data['other'] = this.other!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['front_default'] = frontDefault;
+    if (other != null) {
+      data['other'] = other!.toJson();
     }
     return data;
   }
@@ -102,14 +102,14 @@ class Other {
 
   Other.fromJson(Map<String, dynamic> json) {
     officialArtwork = json['official-artwork'] != null
-        ? new OfficialArtwork.fromJson(json['official-artwork'])
+        ? OfficialArtwork.fromJson(json['official-artwork'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.officialArtwork != null) {
-      data['official-artwork'] = this.officialArtwork!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (officialArtwork != null) {
+      data['official-artwork'] = officialArtwork!.toJson();
     }
     return data;
   }
@@ -127,9 +127,9 @@ class OfficialArtwork {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['front_default'] = this.frontDefault;
-    data['front_shiny'] = this.frontShiny;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['front_default'] = frontDefault;
+    data['front_shiny'] = frontShiny;
     return data;
   }
 }
@@ -144,15 +144,15 @@ class Stats {
   Stats.fromJson(Map<String, dynamic> json) {
     baseStat = json['base_stat'];
     effort = json['effort'];
-    stat = json['stat'] != null ? new Stat.fromJson(json['stat']) : null;
+    stat = json['stat'] != null ? Stat.fromJson(json['stat']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['base_stat'] = this.baseStat;
-    data['effort'] = this.effort;
-    if (this.stat != null) {
-      data['stat'] = this.stat!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['base_stat'] = baseStat;
+    data['effort'] = effort;
+    if (stat != null) {
+      data['stat'] = stat!.toJson();
     }
     return data;
   }
@@ -170,7 +170,7 @@ class Stat {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['url'] = url;
     return data;
@@ -185,14 +185,14 @@ class Types {
 
   Types.fromJson(Map<String, dynamic> json) {
     slot = json['slot'];
-    type = json['type'] != null ? new Type.fromJson(json['type']) : null;
+    type = json['type'] != null ? Type.fromJson(json['type']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['slot'] = this.slot;
-    if (this.type != null) {
-      data['type'] = this.type!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['slot'] = slot;
+    if (type != null) {
+      data['type'] = type!.toJson();
     }
     return data;
   }
@@ -213,7 +213,7 @@ class Type extends Equatable {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['url'] = url;
     return data;
@@ -230,9 +230,9 @@ class Abilities {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.ability != null) {
-      data['ability'] = this.ability!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (ability != null) {
+      data['ability'] = ability!.toJson();
     }
     return data;
   }
@@ -250,7 +250,7 @@ class Ability {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = name;
     data['url'] = url;
     return data;

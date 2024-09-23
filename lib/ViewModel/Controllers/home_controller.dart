@@ -19,7 +19,8 @@ class HomeController extends GetxController {
   List<Results> setPokemonList() => pokemonListModel.value?.results ?? [];
 
   void getPokemonList(int offset) {
-    if (isLoadingMore.value) return; 
+    if (isLoadingMore.value) return;
+    if (filterSelectionList.isNotEmpty) return; 
     isLoadingMore.value = true;
     HomeRepository.getPokemonList(offset).then((value) {
       pokemonListModel.value = PokemonListResponseDataModel.fromJson(value);

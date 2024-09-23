@@ -17,7 +17,7 @@ class PokemonDetailScreen extends StatelessWidget {
     var screenDimension = MediaQuery.sizeOf(context);
     final pokemon = pokemonDetailCtrl.pokemon.value;
     String pokemonType = pokemonDetailCtrl.getPokemonType();
-    String pokemonId = pokemonDetailCtrl.getPokemonId();
+    String pokemonId = pokemonDetailCtrl.getFormattedPokemonId();
     String pokemonName = pokemonDetailCtrl.getPokemonName();
     List<Types> pokemonTypes = pokemonDetailCtrl.getPokemonTypeList();
     String pokemonImage = pokemonDetailCtrl.getPokemonDefaultImage();
@@ -62,7 +62,7 @@ class PokemonDetailScreen extends StatelessWidget {
                             ),
                             const Spacer(),
                             Text(
-                              '#${pokemonId}',
+                              '#$pokemonId',
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
